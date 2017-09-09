@@ -1,0 +1,39 @@
+
+.wrapper{
+	margin:0 auto;
+}
+
+.sect {
+	padding-top:20px;
+}
+
+.whitesect{
+	background-color: $color-bck-light;
+	color: $color-text-dark;
+	height:100%;
+}
+
+.greysect {
+	background-color: $color-bck-dark;
+	@extend %clearfix;
+}
+
+.content-wrapper{
+	@extend %content;
+	width: 90%;
+	@media (min-width: 767px){
+		width:60%;
+	}
+}
+
+.header-wrapper {
+	padding:0;
+	@media #{$brk-narrow}{
+		width: 60%;
+		margin: auto;
+		max-width: 1170px;
+	}
+}
+.aboutuser-wrapper {
+		@extend %clearfix;
+	}

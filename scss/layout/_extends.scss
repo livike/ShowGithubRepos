@@ -1,0 +1,36 @@
+
+//Containers
+
+%content {
+	margin: auto;
+	padding: 10px 0;
+	max-width: 1170px;
+}
+
+//Columns
+
+%columns{
+	width: 46.5%;
+}
+
+//Clearfix
+
+%clearfix{
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+//Navbar floating
+
+%nav-floating {
+	display: inline-block;
+	float:right;
+}
+
+%nav-li-floating {
+	float:left;
+	margin-left: 20px;
+}

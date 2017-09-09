@@ -1,0 +1,107 @@
+//Repos
+
+#pagination{
+	padding: 60px 0;
+}
+
+.repos {
+	&-container {
+		position: relative;
+		@extend %clearfix;
+	}
+
+	&-header {
+		@extend %clearfix;
+		margin-bottom: 10px;
+	}
+	&-list li{
+		padding:10px 0;
+		border-bottom: solid 1px $shuttle-gray;
+	}
+	&-list li a{
+		font-size: 18px;
+	}
+	&-lang {
+		margin-top: 20px;
+		@extend %clearfix;
+	}
+}
+
+//aboutuser
+
+.aboutuser{
+	&-item{
+		@media #{$brk-narrow}{
+			width:46%;
+		}
+	}
+	&-img{
+		max-width: 300px;
+	}
+}
+
+@media #{$brk-narrow}{
+	.au-content{
+		min-height: 300px;
+	}
+
+	.au-left{
+		float:left;
+		width: 30%;
+		display: inline-block;
+	}
+
+	.au-right{
+		float:right;
+		width:65%;
+		display: inline-block;
+	}
+}
+
+.inline{
+	display:inline-block;
+	margin-right: 10px;
+}
+
+.u-flex{
+	display: flex;
+}
+
+.u-flexCol {
+    -webkit-box-direction: normal!important;
+    -ms-flex-direction: column!important;
+    flex-direction: column!important;
+	}
+
+.u-flexAlignItemsCenter {
+    -webkit-box-align: center!important;
+    -ms-flex-align: center!important;
+    align-items: center!important;
+	}
+
+.statsItem{
+	margin-right: 10px;
+}
+
+.statsValue{
+	font-size: 25px;
+}
+.profil-icons{
+	min-width: 20px;
+}
+
+ .previous_link , .next_link ,.active_page, .page_link{
+  font-weight: bold;
+	font-size: 20px;
+	margin-right: 20px;
+	padding: 5px 10px;
+}
+
+.previous_link:hover , .next_link:hover ,.active_page:hover{
+	color: $white;
+}
+
+.previous_link , .next_link ,.active_page{
+ background-color: $green;
+ color: #fff;
+}

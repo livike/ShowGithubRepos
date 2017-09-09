@@ -2,30 +2,122 @@
 <head>
   <meta charset="utf-8">
   <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet"> -->
-  <title>Addy Osmani's repositories</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/font-awesome/font-awesome.css">
+  <link rel="stylesheet" href="css/application.css">
 
+  <title>Addy Osmani's repositories</title>
 </head>
   <body>
-
-    <div style="border: 1px solid #cacaca; padding: 20px; margin: 0 20px 0 20px;">
-
-      <a href="#" id="repo" class="btn">Repos Info</a>
-
+    <div class="wrapper">
+      <header id="home">
+      			<nav class ="nav-bar">
+      				<div class="header-wrapper">
+                <a href="#"><span><i class="fa fa-git-square fa-3x"></i></span>hub Profile <i class="fa fa-2x fa-search-plus"></i>view</a>
+      					<input class="menu-btn" type="checkbox" id="menu-btn" />
+        				<label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+      					<ul class="nav">
+      						<li><a href="#home">Home</a></li>
+      						<li><a href="#contact">Author</a></li>
+      					</ul>
+      				</div>
+      			</nav>
+      		</header>
       <input type='hidden' id='current_page' />
 
-      <div>
-        <div id='page_navigation'></div>
-      </div>
+      <section id="aboutuser" class="sect greysect">
+      			<div class="content-wrapper aboutuser-wrapper">
+              <div id="userArea">
 
-    </div>
+              </div>
+      			</div>
+      		</section>
+      <section id="repos" class="sect whitesect">
+        <div class="content-wrapper">
+          <div class="repos-header">
+            <h2>Repositories</h2>
+          </div>
+          <div id="reposit" class="repos-container">
 
-    <div style="background-color:#cacaca; padding: 20px; margin: 0 20px 0 20px;" id="result">
+          </div>
+        </div>
+      </section>
+      <section id="pagination" class="sect whitesect">
+      	<div class="content-wrapper">
+          <div>
+            <div id='page_navigation'></div>
+          </div>
 
-      <h2>Addy Osmani's repositories</h2>
-      <ul id="reposit"></ul>
-    </div>
-
+      		</div>
+      </section>
+  </div>
   </body>
+  <footer class="footer sect greysect">
+  <div class="content-wrapper">
+    <div>
+    <h2>About the author</h2>
+  </div>
+    <div class="footer-socicons">
+      <ul>
+        <li><a href="https://www.linkedin.com/in/liviadobai/" target="_blank"><i class="fa fa-linkedin-square fa-lg"></i></a></li>
+        <li><a href="http://twitter.com/livike" target="_blank"><i class="fa fa-twitter fa-lg"></i></a></li>
+        <li><a href="skype:-liviadobai-?add" target="_blank"><i class="fa fa-skype fa-lg"></i></a></li>
+        <li><a href="http://livike.github.io/"><i class="fa fa-link fa-lg"></i></a></li>
+      </ul>
+    </div>
+      <span class="footer-top"><a href="#home"><i class="fa fa-chevron-up"></i>Go to top</a></span>
+  </div>
+  </footer>
+  <script id="ghUser" type="text/template">
+    <div class="au-content">
+      <div class="aboutuser-item au-left">
+        <div class="aboutuser-img">
+          <img src={{avatar_url}} alt={{name}}>
+        </div>
+      </div>
+      <div class="aboutuser-item au-right">
+        <div class="profilheader"><div class="inline"><h2>{{name}}</h2></div><p class="inline"><a href={{html_url}}>@{{login}}</a></p></div>
+        <div class="profilheader-bio"><p>{{bio}}</p></div>
+        <div class="profilheader-info">
+          <ul>
+            <li>
+              <span class="profil-icons inline"><i class="fa fa-users"></i></span>
+                <p class="inline">{{company}}</p>
+            </li>
+            <li>
+              <span class="profil-icons inline"><i class="fa fa-map-marker"></i></span>
+              <p class="inline">{{location}}</p>
+            </li>
+            <li><span class="profil-icons inline"><i class="fa fa-link"></i></span>
+              <a  href={{blog}} class="inline">{{blog}}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="profilheader-numbers">
+          <ul class="u-flex">
+            <li class="statsItem u-flex u-flexCol u-flexAlignItemsCenter"><p class="statsValue">{{followers}}</p><p class="statsLabel">Followers</p></li>
+            <li class="statsItem u-flex u-flexCol u-flexAlignItemsCenter"><p class="statsValue">{{following}}</p><p class="statsLabel">Following</p></li>
+            <li class="statsItem u-flex u-flexCol u-flexAlignItemsCenter"><p class="statsValue">{{public_repos}}</p><p class="statsLabel">Repos</p></li>
+          </ul>
+        </div>
+    </div>
+  </script>
+  <script id="ghRepos" type="text/template">
+    <div class="repos-contents">
+      <ul class="repos-list">
+        {{#repos}}
+        <li><a href="javascript:showRepo({{index}});"><span>{{name}}</span></a>
+          <p>{{description}}</p>
+          <div class="repos-lang">
+            {{#langexist}}<span><i class="fa fa-circle"></i> {{/langexist}}{{language}}</span>
+          </div>
+        </li>
+        {{/repos}}
+      </ul>
+    </div>
+  </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="js/mustache.min.js"></script>
   <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 </html>
