@@ -19,7 +19,7 @@
         				<label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
       					<ul class="nav">
       						<li><a href="#home">Home</a></li>
-      						<li><a href="#contact">Author</a></li>
+      						<li><a href="#footer">Author</a></li>
       					</ul>
       				</div>
       			</nav>
@@ -38,22 +38,20 @@
           <div class="repos-header">
             <h2>Repositories</h2>
           </div>
-          <div id="reposit" class="repos-container">
-
-          </div>
+          <div id="reposit" class="repos-container"></div>
         </div>
       </section>
       <section id="pagination" class="sect whitesect">
       	<div class="content-wrapper">
           <div>
-            <div id='page_navigation'></div>
+            <div id='page_navigation_bottom'></div>
           </div>
 
       		</div>
       </section>
   </div>
   </body>
-  <footer class="footer sect greysect">
+  <footer id = "footer" class="footer sect greysect">
   <div class="content-wrapper">
     <div>
     <h2>About the author</h2>
@@ -77,7 +75,7 @@
         </div>
       </div>
       <div class="aboutuser-item au-right">
-        <div class="profilheader"><div class="inline"><h2>{{name}}</h2></div><p class="inline"><a href={{html_url}}>@{{login}}</a></p></div>
+        <div class="profilheader"><div class="inline"><h2>{{name}}</h2></div><p class="inline"><a href={{html_url}}  target="_blank">@{{login}}</a></p></div>
         <div class="profilheader-bio"><p>{{bio}}</p></div>
         <div class="profilheader-info">
           <ul>
@@ -90,7 +88,7 @@
               <p class="inline">{{location}}</p>
             </li>
             <li><span class="profil-icons inline"><i class="fa fa-link"></i></span>
-              <a  href={{blog}} class="inline">{{blog}}</a>
+              <a  href={{blog}}   target="_blank" class="inline">{{blog}}</a>
             </li>
           </ul>
         </div>

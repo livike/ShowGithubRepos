@@ -69,6 +69,7 @@ function githubRepos (url){
       //Prepare the data for the Mustache template
       let data = {
         name: resp.name,
+        html_url: resp.html_url,
         avatar_url: resp.avatar_url,
         login: resp.login,
         bio: resp.bio,
@@ -108,7 +109,7 @@ function navigationHtml(number_of_pages){
   }
   navigation_html += '<a class="next_link" href="javascript:next();"> Next </a>';
 
-  $('#page_navigation').html(navigation_html);
+  $('#page_navigation_bottom').html(navigation_html);
 
   //add active_page class to the first page link
   $('#page_navigation .page_link:first').addClass('active_page');
@@ -120,6 +121,7 @@ function go_to_page(page_num){
   //set the actual active page class
   $('.page_link[longdesc=' + page_num +']').addClass('active_page').siblings('.active_page').removeClass('active_page');
   $('#current_page').val(page_num);//update the current page input field
+  $('html, body').animate({ scrollTop: 0 }, 'fast');
 
 }
 
