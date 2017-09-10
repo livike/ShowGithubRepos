@@ -108,11 +108,22 @@
         <li><a href="javascript:showRepo({{index}});"><span>{{name}}</span></a>
           <p>{{description}}</p>
           <div class="repos-lang">
-            {{#langexist}}<span><i class="fa fa-circle"></i> {{/langexist}}{{language}}</span>
+            {{#langexist}}<span><i class="fa fa-circle"></i> {{/langexist}}{{language}} </span>
+            <span><i class="fa fa-pencil"></i> Last updted: {{updated_at_new}}</span>
           </div>
         </li>
         {{/repos}}
       </ul>
+    </div>
+  </script>
+  <script id="ghSingleRepo" type="text/template">
+    <div class="repo-contents">
+      <div>
+        <h3><a href={{html_url}} target="_blank">{{name}}</a></h3>
+        {{#fork}}
+        <span>Forked from:</span><a href=
+        {{/fork}}
+      </div>
     </div>
   </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>

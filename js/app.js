@@ -6,6 +6,21 @@ const user = "addyosmani";
 let number_of_pages1;
 let nextrepo;
 
+ function formatDate(iso_date){
+   let date = new Date(iso_date);
+   let year = date.getFullYear();
+   let month = date.getMonth()+1;
+   let dt = date.getDate();
+
+    if (dt < 10) {
+      dt = '0' + dt;
+    }
+    if (month < 10) {
+      month = '0' + month;
+    }
+
+    return year+'.' + month + '.'+dt;
+ }
 
 function createRepoList(response){
   //Prepare the data for the Mustache template
@@ -21,6 +36,7 @@ function createRepoList(response){
       }
     };
     item.langexist = e;
+    item.updated_at_new = formatDate(item.updated_at);
   });
   let repos = $.extend([], response);
   repos = {"repos": repos};
@@ -88,7 +104,7 @@ function githubRepos (url){
       console.log("githubUser - "+error)
     })
     //Fetch and show the repos fot the user
-    const urlallrepos = baseurl+user+"/repos";
+    const urlallrepos = baseurl+user+"/repos?sort=updated";
     githubRepos(urlallrepos);
     }
 
