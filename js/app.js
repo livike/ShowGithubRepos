@@ -27,6 +27,42 @@ let $index = 0;
     return year+'.' + month + '.'+dt;
  }
 
+ function msToTime(duration) {
+     let milliseconds = parseInt((duration%1000)/100)
+         , seconds = parseInt((duration/1000)%60)
+         , minutes = parseInt((duration/(1000*60))%60)
+         , hours = parseInt((duration/(1000*60*60))%24);
+
+     return hours + " hours and " + minutes + " minutes ago";
+ }
+
+ function days_ago(iso_date) {
+   let today_date = new Date();
+   let date = new Date(iso_date);
+  //  today_date = today_date.toISOString();
+    // The number of milliseconds in one day
+    const ONE_DAY = 1000 * 60 * 60 * 24
+
+    // Convert both dates to milliseconds
+    const date_ms = date.getTime()
+    const today_date_ms = today_date.getTime()
+    // Calculate the difference in milliseconds
+    const difference_ms = Math.abs(date_ms - today_date_ms);
+
+    if (difference_ms<=ONE_DAY){
+        return msToTime(difference_ms);
+    } else {
+        // Convert back to days and return
+        const days_ago = Math.round(difference_ms/ONE_DAY);
+        if (days_ago > 365){
+          return formatDate(date);
+        }else{
+          return days_ago+" days ago";
+        }
+      }
+
+    }
+
 function createRepoList(response){
   //Prepare the data for the Mustache template
   let i=0;
@@ -41,7 +77,7 @@ function createRepoList(response){
       }
     };
     item.langexist = e;
-    item.updated_at_new = formatDate(item.updated_at);
+    item.updated_at_new = days_ago(item.updated_at);
   });
   let repos = $.extend([], response);
   repos = {"repos": repos};
