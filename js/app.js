@@ -11,6 +11,10 @@ let $container = $('<div></div>');
 let overlayOn = false;
 let $index = 0;
 
+/////////////
+//API LOGIC//
+/////////////
+
  function formatDate(iso_date){
    let date = new Date(iso_date);
    let year = date.getFullYear();
@@ -39,8 +43,7 @@ let $index = 0;
  function days_ago(iso_date) {
    let today_date = new Date();
    let date = new Date(iso_date);
-  //  today_date = today_date.toISOString();
-    // The number of milliseconds in one day
+   // The number of milliseconds in one day
     const ONE_DAY = 1000 * 60 * 60 * 24
 
     // Convert both dates to milliseconds
@@ -60,7 +63,6 @@ let $index = 0;
           return days_ago+" days ago";
         }
       }
-
     }
 
 function createRepoList(response){
@@ -174,11 +176,11 @@ function githubRepos (url){
 //////////////
 //NAVIGATION//
 /////////////
+
 function navigationHtml(number_of_pages){
   //set the hidden field "current_page to 1"
   let current_page = document.getElementById("current_page");
   current_page.value = 1;
-
   //create the navigation node
   let navigation_html = '<a class="previous_link" href="javascript:previous();"> Prev </a>';
   let current_link = 1;
@@ -187,21 +189,18 @@ function navigationHtml(number_of_pages){
     current_link++;
   }
   navigation_html += '<a class="next_link" href="javascript:next();"> Next </a>';
-
   $('#page_navigation_bottom').html(navigation_html);
-
   //add active_page class to the first page link
   $('#page_navigation .page_link:first').addClass('active_page');
 }
 
 function go_to_page(page_num){
-  //debugger;
+
   githubRepos(baseurl+user+"/repos?page="+page_num);
   //set the actual active page class
   $('.page_link[longdesc=' + page_num +']').addClass('active_page').siblings('.active_page').removeClass('active_page');
   $('#current_page').val(page_num);//update the current page input field
   $('html, body').animate({ scrollTop: 0 }, 'fast');
-
 }
 
 function previous(){
@@ -220,13 +219,10 @@ function next(){
 		go_to_page(new_page);
 	}
 }
-//////////////////
-//END NAVIGATION//
-/////////////////
 
-////////////
-//SINGLE REPO END PAGE
-/////////
+////////////////////////
+//SINGLE REPO END PAGE//
+///////////////////////
 
 //Function: close the overlay
 var openCloseOverlay = function(event){
@@ -245,10 +241,8 @@ function showRepo(index){
 
   $("body").append($overlay);
   const template = $("#ghSingleRepo").html().trim();
-
   //Render the Mustache template
   const re = repositories.repos[index];
-  //debugger;
   let html = Mustache.render(template,repositories.repos[index]);
   $container.html(html);
   $overlay.append($container);
@@ -261,10 +255,7 @@ function showRepo(index){
   openCloseOverlay("open");
 }
 
-
-/********************
-KEYBOARD EVENT
-********************/
+//KEYBOARD EVENT
 //Esc : 27 -> Close the Lightbox
 
 $( window ).keyup(function(event) {
