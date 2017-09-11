@@ -78,6 +78,9 @@ function createRepoList(response){
     };
     item.langexist = e;
     item.updated_at_new = days_ago(item.updated_at);
+    if(item.topics.length>0){
+      item.topics = toObject(item.topics);
+    }
   });
   let repos = $.extend([], response);
   repos = {"repos": repos};
@@ -86,6 +89,19 @@ function createRepoList(response){
   //Render the Mustache template
   let html = Mustache.render(template,repos);
   $("#reposit").html(html);
+}
+
+function toObject(arr) {
+  let output = [];
+  let obj=null;
+  if(arr){
+    for (let i = 0; i < arr.length; ++i){
+      obj={};
+       obj={"topicname": arr[i]};
+       output.push(obj);
+     }
+  }
+  return output;
 }
 
 function numberOfPages(link){
@@ -103,8 +119,13 @@ function numberOfPages(link){
 }
 
 function githubRepos (url){
-
-  fetch(url)
+  let myHeaders = new Headers();
+  myHeaders.append("Accept", "application/vnd.github.mercy-preview+json");
+  let myInit = { method: 'GET',
+                 headers: myHeaders,
+                 mode: 'cors',
+                 cache: 'default' };
+  fetch(url,myInit)
   .then(function(response) {
   if(!number_of_pages1){
       number_of_pages1 = numberOfPages(response.headers.get('link'));// getting the number of pages of all repos

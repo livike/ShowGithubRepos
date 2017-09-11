@@ -250,8 +250,9 @@ p {
 @media (min-width: 768px) {
   .aboutuser-item {
     width: 46%; } }
-.aboutuser-img {
-  max-width: 300px; }
+.aboutuser-img img {
+  max-width: 270px;
+  border-radius: 10px; }
 
 @media (min-width: 768px) {
   .au-content {
@@ -323,19 +324,32 @@ p {
   position: fixed;
   top: 0;
   left: 0;
-  text-align: center;
   display: none; }
 
 .repo-contents {
   background: #fff;
-  color: #fff;
-  border-radius: 1em;
-  padding: 1em;
+  color: #515F67;
+  width: 700px;
+  min-height: 350px;
+  border-radius: .5em;
+  padding: 2em;
   position: absolute;
   top: 50%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%); }
+.repo-stats {
+  margin-right: 20px; }
+.repo-topics {
+  display: inline-block;
+  background-color: #269930;
+  border: solid 1px #269930;
+  border-radius: 2px;
+  color: #fff;
+  padding: 3px 5px;
+  margin: 5px; }
+.repo-data {
+  margin-top: 30px; }
 
 /********************
 BUTTONS
@@ -350,23 +364,9 @@ BUTTONS
 .btn:focus {
   outline: transparent; }
 
-.btnprev {
-  left: 15%;
-  top: 45%; }
-
-.btnnext {
-  top: 45%;
-  right: 15%; }
-
 .btnclose {
   top: 5%;
   right: 5%; }
-
-.info {
-  position: absolute;
-  top: 15%;
-  right: 3%;
-  max-width: 130px; }
 
 /*!
  *  Font Awesome 4.6.3 by @davegandy - http://fontawesome.io - @fontawesome
@@ -390,7 +390,7 @@ BUTTONS
 
 /* makes the font 33% larger relative to the icon container */
 .fa-lg {
-  font-size: 1.33333em;
+  font-size: 1.3333333333em;
   line-height: 0.75em;
   vertical-align: -15%; }
 
@@ -407,24 +407,24 @@ BUTTONS
   font-size: 5em; }
 
 .fa-fw {
-  width: 1.28571em;
+  width: 1.2857142857em;
   text-align: center; }
 
 .fa-ul {
   padding-left: 0;
-  margin-left: 2.14286em;
+  margin-left: 2.1428571429em;
   list-style-type: none; }
   .fa-ul > li {
     position: relative; }
 
 .fa-li {
   position: absolute;
-  left: -2.14286em;
-  width: 2.14286em;
-  top: 0.14286em;
+  left: -2.1428571429em;
+  width: 2.1428571429em;
+  top: 0.1428571429em;
   text-align: center; }
   .fa-li.fa-lg {
-    left: -1.85714em; }
+    left: -1.8571428571em; }
 
 .fa-border {
   padding: .2em .25em .15em;

@@ -119,7 +119,28 @@
   <script id="ghSingleRepo" type="text/template">
     <div class="repo-contents">
       <div>
-        <h3><a href={{html_url}} target="_blank">{{name}}</a></h3>
+        <h3><a href={{html_url}} target="_blank">{{name}}  <i class="fa fa-link"></i></a></h3>
+        <p>{{description}}</p>
+      </div>
+      <ul>
+        {{#topics}}
+          <li class="repo-topics">{{topicname}}
+        {{/topics}}
+      </ul>
+      <div>
+      </div>
+      <div class="repos-lang">
+        <p><i class="fa fa-pencil"></i> Last updted: {{updated_at_new}}</p>
+        <div class="repo-data">
+        {{#langexist}}<span><i class="fa fa-circle"></i> {{/langexist}}{{language}} </span>
+        <ul class="u-flex">
+          <li class="repoItem u-flex u-flexCol u-flexAlignItemsCenter"><span class="repo-stats"><a href={{stargazers_url}}><i class="fa fa-eye"></i> Watch: {{watchers_count}}</a></span></li>
+          <li class="repoItem u-flex u-flexCol u-flexAlignItemsCenter"><span class="repo-stats"><a href={{forks_url}}><i class="fa fa-code-fork"></i> Fork: {{forks_count}}</a></span></li>
+          <li class="repoItem u-flex u-flexCol u-flexAlignItemsCenter"><span class="repo-stats"><i class="fa fa-star-o"></i> Star: {{stargazers_count}}</span></li>
+        </ul>
+
+        <div>
+
       </div>
     </div>
   </script>

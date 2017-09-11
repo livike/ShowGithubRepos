@@ -6,21 +6,39 @@
 	position:fixed;
 	top:0;
 	left:0;
-	text-align: center;
 	display:none;
 }
-
-.repo-contents{
-  background: $white;
-  color: $color-text-light;
-  border-radius: 1em;
-  padding: 1em;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%)
+.repo{
+	&-contents{
+	  background: $white;
+	  color: $color-text-dark;
+		width:700px;
+		min-height: 350px;
+	  border-radius: .5em;
+	  padding: 2em;
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  margin-right: -50%;
+	  transform: translate(-50%, -50%)
+	}
+	&-stats{
+		margin-right: 20px;
+	}
+	&-topics{
+		display:inline-block;
+		background-color: $green;
+		border: solid 1px $green;
+		border-radius: 2px;
+		color:$color-text-light;
+		padding: 3px 5px;
+		margin:5px;
+	}
+	&-data{
+		margin-top:30px;
+	}
 }
+
 
 /********************
 BUTTONS
@@ -38,24 +56,7 @@ BUTTONS
 	outline: transparent;
 }
 
-.btnprev {
-	left:15%;
-	top:45%;
-}
-
-.btnnext {
-	top:45%;
-	right:15%;
-}
-
 .btnclose {
 	top:5%;
 	right:5%;
-}
-
-.info {
-	position:absolute;
-	top:15%;
-	right:3%;
-	max-width: 130px;
 }
