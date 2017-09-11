@@ -3,8 +3,13 @@
 const baseurl = "https://api.github.com/users/";
 const user = "addyosmani";
 //const ul = document.getElementById('reposit'); // Get the list where we will place our authors
+let repositories={};
 let number_of_pages1;
 let nextrepo;
+let $overlay = $('<div id="overlay" class="overlay"></div>');
+let $container = $('<div></div>');
+let overlayOn = false;
+let $index = 0;
 
  function formatDate(iso_date){
    let date = new Date(iso_date);
@@ -40,6 +45,7 @@ function createRepoList(response){
   });
   let repos = $.extend([], response);
   repos = {"repos": repos};
+  repositories = repos;
   const template = $("#ghRepos").html().trim();
   //Render the Mustache template
   let html = Mustache.render(template,repos);
@@ -160,5 +166,57 @@ function next(){
 //////////////////
 //END NAVIGATION//
 /////////////////
+
+////////////
+//SINGLE REPO END PAGE
+/////////
+
+//Function: close the overlay
+var openCloseOverlay = function(event){
+  if (event=='open'){
+    $overlay.fadeIn();
+    overlayOn = true;
+  }else if (event=='close'){
+    $overlay.fadeOut();
+    overlayOn = false;
+  }else{
+    return false;
+  }
+};
+
+function showRepo(index){
+
+  $("body").append($overlay);
+  const template = $("#ghSingleRepo").html().trim();
+
+  //Render the Mustache template
+  const re = repositories.repos[index];
+  //debugger;
+  let html = Mustache.render(template,repositories.repos[index]);
+  $container.html(html);
+  $overlay.append($container);
+  $overlay.add().append("<button id='btnClose' class='btn btnclose'> X </button>");
+  // for Close hide the overlay
+  $("#btnClose").click(function(){
+  	openCloseOverlay("close");
+  });
+
+  openCloseOverlay("open");
+}
+
+
+/********************
+KEYBOARD EVENT
+********************/
+//Esc : 27 -> Close the Lightbox
+
+$( window ).keyup(function(event) {
+  const KeyboardKey = event.which;
+  if(overlayOn){
+  	if (KeyboardKey == '27'){
+  		openCloseOverlay("close");
+    }
+  }
+});
 
   githubUser();
