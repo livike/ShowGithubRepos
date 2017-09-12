@@ -191,7 +191,8 @@ function navigationHtml(number_of_pages){
   navigation_html += '<a class="next_link" href="javascript:next();"> Next </a>';
   $('#page_navigation_bottom').html(navigation_html);
   //add active_page class to the first page link
-  $('#page_navigation .page_link:first').addClass('active_page');
+  let temp=$('#page_navigation_bottom .page_link:first');
+  $('#page_navigation_bottom .page_link:first').addClass('active_page');
 }
 
 function go_to_page(page_num){
