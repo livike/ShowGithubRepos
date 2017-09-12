@@ -1,6 +1,6 @@
 "use strict";
 
-const baseurl = "https://api.github.com/users/";
+const baseurl = "https://api.github.com/";
 const user = "addyosmani";
 //const ul = document.getElementById('reposit'); // Get the list where we will place our authors
 let repositories={};
@@ -169,7 +169,7 @@ function githubRepos (url){
       console.log("githubUser - "+error)
     })
     //Fetch and show the repos fot the user
-    const urlallrepos = baseurl+user+"/repos?sort=updated";
+    const urlallrepos = baseurl+"users/"+user+"/repos?sort=updated";
     githubRepos(urlallrepos);
     }
 
@@ -196,7 +196,7 @@ function navigationHtml(number_of_pages){
 
 function go_to_page(page_num){
 
-  githubRepos(baseurl+user+"/repos?page="+page_num);
+  githubRepos(baseurl+"users/"+user+"/repos?sort=updated&page="+page_num);
   //set the actual active page class
   $('.page_link[longdesc=' + page_num +']').addClass('active_page').siblings('.active_page').removeClass('active_page');
   $('#current_page').val(page_num);//update the current page input field
